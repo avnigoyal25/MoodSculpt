@@ -1,0 +1,71 @@
+body{
+    background-color: rgb(212, 237, 241);
+}
+#header{
+    background-color: black;
+    height: 40px;
+    padding-top: 50px;
+    margin-top: -20px;
+}
+center{
+    color: white;
+    font-size: 15px;
+}
+h1{
+    margin-top: 150px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+p{
+    text-align: center;
+    font-size: 20px;
+    font-family: cursive;
+    font-style: italic;
+}
+button{
+  background-color: #0078d0;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 530px;
+  margin-top: 60px;
+}
+
+button:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+button:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  button{
+    padding: 16px 48px;
+  }
+}

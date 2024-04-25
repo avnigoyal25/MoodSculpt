@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../static/detect_mood.css">
+    <title>Emotion Detection</title>
+    <script>
+        function captureEmotion() {
+            $.get("/capture_emotion", function(data) {
+                window.location.href = "/result";
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Emotion Detection</h1>
+    <img src="{{ url_for('video_feed')}}" id="camera">
+    <button class="button-24" onclick="captureEmotion()">Capture Emotion</button>
+</body>
+</html>

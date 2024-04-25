@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Result</title>
+    <link rel="stylesheet" href="../static/result.css">
+</head>
+
+<body>
+    <div id="container">
+        <h2 id="top">Top picks</h2>
+        <ul id="songList"></ul>
+        <h2 id="top2">Suggested Movies</h2>
+        <ul id="movieList"></ul>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            var imageUrls = [
+                "https://i.postimg.cc/FFLCzn9K/78955587.jpg",
+                "https://i.postimg.cc/Y2dNp6FS/canva-memories-animated-music-album-cover-art-1-Nr6gs-Und-Kw.jpg",
+                "https://i.postimg.cc/JhCZTKfp/image.jpg",
+                "https://i.postimg.cc/dtzy14VJ/b8e90f4012eb1b02c5f3ac4d00d3b4a5.png",
+                "https://i.postimg.cc/3rzX4KLM/canva-black-minimalist-photocentric-rose-on-fire-hip-hop-album-cover-la-JL2q01-ZUU.jpg",
+                "https://i.postimg.cc/vBcnTjfH/sphere-glass-the-mixtape-cd-cover-design-template-73ab5b3d9b81f442cb2288630ab63acf.jpg",
+                "https://i.postimg.cc/fRD0mkmP/image.jpg",
+                "https://i.postimg.cc/3RskRw3n/open-book-music-2-ACMHTN.jpg",
+                "https://i.postimg.cc/YC0M5HH9/gradient-album-cover-template-23-2150597431.jpg",
+                "https://i.postimg.cc/TY7Xq4DX/image.jpg"
+            ];
+
+            var movieImageUrl = [
+                "https://i.postimg.cc/L6257Pj1/image.jpg",
+                "https://i.postimg.cc/j2RHCsS5/image.jpg",
+                "https://i.postimg.cc/vTdsVNJD/canva-green-black-classic-minimalist-fantasy-movie-poster-njyzyk-Fu-Cug.jpg",
+                "https://i.postimg.cc/MT7LhKLK/image.jpg",
+                "https://i.postimg.cc/sf0P3RRV/image.jpg",
+                "https://i.postimg.cc/pXbfmJy7/image.jpg",
+                "https://i.postimg.cc/t4gYJsdw/image.jpg",
+                "https://i.postimg.cc/sxS0pfYR/image.jpg",
+                "https://i.postimg.cc/MZyDbLkx/image.jpg",
+                "https://i.postimg.cc/xCQk0t6y/image.jpg",
+                "https://i.postimg.cc/MHvzxBJm/image.jpg",
+                "https://i.postimg.cc/521NQ6Bb/image.jpg"
+            ];
+            var urlParams = new URLSearchParams(window.location.search);
+            var lastEmotion = urlParams.get('last_emotion');
+
+
+            $.get("/get_songs_and_movies?last_emotion=" + lastEmotion, function (data) {
+                
+                var songs = data.songs;
+                var movies = data.movies;
+                var songList = document.getElementById('songList');
+
+                // Clear previous items
+                    songs.forEach(function (song) {
+                        var cleanedSong = song.replace(/Mood\s*[-–—]?\s*/gi, "");
+                        var parts = cleanedSong.split(/ - (?=[^-]+$)/);
+                        var formattedSong = parts.join(' <br>');
+                        var li = document.createElement('li');
+
+                        // Create image element
+                        var img = document.createElement('img');
+                        var randomIndex = Math.floor(Math.random() * imageUrls.length);
+                        img.src = imageUrls[randomIndex];
+                        img.style.width = '50px';
+                        img.style.height = '50px';
+                        img.style.marginRight = '10px';
+
+                        // Create anchor element and append text
+                        var a = document.createElement('a');
+                        var query = encodeURIComponent(cleanedSong); // Encoding the song name for URL
+                        a.href = `https://www.youtube.com/results?search_query=${query}`; // Create a search URL for YouTube
+                        a.target = "_blank"; // Open in a new tab
+                        a.innerHTML = formattedSong;
+                        a.style.color = 'inherit';
+                        a.style.textDecoration = 'none';
+
+                        // Append image and anchor to li
+                        li.appendChild(img);
+                        li.appendChild(a);
+
+                        songList.appendChild(li);
+                    });
+
+                var movieList = document.getElementById('movieList');
+
+                // Clear previous items
+                        movies.forEach(function (movie) {
+                        var movieItem = document.createElement('div');
+                        movieItem.className = 'movieItem';
+
+                        // Create and append the image element
+                        var img = document.createElement('img');
+                        var randomIndex = Math.floor(Math.random() * movieImageUrl.length); // Get a random index
+                        img.src = movieImageUrl[randomIndex]; // Use the random index to pick an image URL
+                        img.className = 'movieImage';
+                        movieItem.appendChild(img);
+
+                        // Create and append the title element
+                        var title = document.createElement('div');
+                        title.textContent = movie;
+                        title.className = 'movieTitle';
+                        movieItem.appendChild(title);
+
+                        // Append the movie item to the list
+                        movieList.appendChild(movieItem);
+                    });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

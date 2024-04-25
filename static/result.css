@@ -1,0 +1,92 @@
+#container {
+    position: relative;
+    height: 1400px;
+    margin: -23px -10px 0;
+}
+#container::before {
+    content: "";
+    background-image: url(https://i.postimg.cc/BQK1Bf9n/image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(5px); 
+    z-index: -1;
+}
+#top, #top2{
+    margin-left: 150px;
+    padding-top: 50px;
+    color: chartreuse;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    animation: dance 2s infinite;
+}
+@keyframes dance {
+    0%, 100% { font-style: italic; }
+    50% { transform: translateX(-5px); font-style: normal; }
+    51% { transform: translateX(5px); font-style: normal; }
+}
+#songList {
+    margin-left: 50px;
+    padding-top: 20px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+    color: white;
+}
+#songList li {
+    background-color: rgba(128, 128, 128, 0.5); 
+    border-radius: 15px; 
+    padding: 10px 20px; 
+    margin: 10px 0; 
+    list-style-type: none; 
+    color: white; 
+    font-family: Arial, sans-serif; 
+    max-width: 80%; 
+    word-wrap: break-word;
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    text-decoration: none;
+    cursor: pointer;
+}
+#songList li:hover{
+    color: orange;
+}
+#movieList {
+    margin-left: 80px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 20px; 
+    list-style-type: none;
+}
+
+.movieImage {
+    width: 100%; 
+    height: 200px; 
+}
+
+.movieTitle {
+    background-color: white; 
+    padding: 5px 10px; 
+    width: 100%; 
+    text-align: center; 
+    font-size: 14px; 
+    color: #0083ff;
+    cursor: pointer;
+}
+.movieItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid black;
+    width: 200px;
+}
