@@ -14,6 +14,14 @@ Integration with OMDB API for personalized movie recommendations.
 
 User-friendly interface for easy interaction.
 
+# Tech Stack
+
+ML model- Python, Tensorflow, Transfer learning
+
+Frontend- HTML,CSS,Javascript
+
+Backend- Flask
+
 ![Screenshot (241)](https://github.com/avnigoyal25/MoodSculpt/assets/91952706/710e754f-5ba8-41f5-a7ce-22208df394bc)
 
 ![Screenshot (244)](https://github.com/avnigoyal25/MoodSculpt/assets/91952706/3d36a391-9d20-412e-930a-4433ad6e51aa)
